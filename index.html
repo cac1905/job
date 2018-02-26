@@ -963,6 +963,15 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   ECMAScript 2015 新增:Symbol(创建后独一无二且不可变的数据类型 )
 </code></pre>
 </li>
+
+<li>
+<p>==和之间有什么区别===？</p>
+  <pre>
+    <code><p>"==="叫做严格运算符，"=="叫做相等运算符。<br><br>严格运算符的运算规则如下:</p><br><p>(1)不同类型值<br>如果两个值的类型不同，直接返回false。<br></p>(2)同一类的原始类型值<br><p>同一类型的原始类型的值（数值、字符串、布尔值）比较时，值相同就返回true，值不同就返回false。</p><p>(3)同一类的复合类型值</p><p>两个复合类型（对象、数组、函数）的数据比较时，不是比较它们的值是否相等，而是比较它们是否指向同一个对象。</p><p>(4)undefined和null</p><p>undefined 和 null 与自身严格相等。
+    </code>
+  </pre>
+</li>
+
 <li>
 <p>介绍js有哪些内置对象？</p>
 <pre><code> Object 是 JavaScript 中所有对象的父对象
@@ -1011,71 +1020,9 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   // Func { name="Sean", getInfo=function()}
 </code></pre>
 </li>
+ 
 <li>
-<p>JavaScript有几种类型的值？，你能画一下他们的内存图吗？</p>
-<pre><code> 栈：原始数据类型（Undefined，Null，Boolean，Number、String）
- 堆：引用数据类型（对象、数组和函数）
-
- 两种类型的区别是：存储位置不同；
- 原始数据类型直接存储在栈(stack)中的简单数据段，占据空间小、大小固定，属于被频繁使用数据，所以放入栈中存储；
- 引用数据类型存储在堆(heap)中的对象,占据空间大、大小不固定。如果存储在栈中，将会影响程序运行的性能；引用数据类型在栈中存储了指针，该指针指向堆中该实体的起始地址。当解释器寻找引用值时，会首先检索其在栈中的地址，取得地址后从堆中获得实体
-</code></pre>
-<p><a href="./687474703a2f2f7777772e77337363686f6f6c2e636f6d2e636e2f692f63745f6a735f76616c75652e676966" target="_blank"><img src="./687474703a2f2f7777772e77337363686f6f6c2e636f6d2e636e2f692f63745f6a735f76616c75652e676966" alt="Stated Clearly Image" data-canonical-src="http://www.w3school.com.cn/i/ct_js_value.gif" style="max-width:100%;"></a></p>
-</li>
-<li>
-<p>如何将字符串转化为数字，例如'12.3b'?</p>
-<pre><code>  * parseFloat('12.3b');
-  * 正则表达式，'12.3b'.match(/(\d)+(\.)?(\d)+/g)[0] * 1, 但是这个不太靠谱，提供一种思路而已。
-</code></pre>
-</li>
-<li>
-<p>如何将浮点数点左边的数每三位添加一个逗号，如12000000.11转化为『12,000,000.11』?</p>
-<pre><code>  function commafy(num){
-    return num &amp;&amp; num
-      .toString()
-      .replace(/(\d)(?=(\d{3})+\.)/g, function($1, $2){
-        return $2 + ',';
-      });
-  }
-</code></pre>
-</li>
-<li>
-<p>如何实现数组的随机排序？</p>
-<pre><code>  方法一：
-    var arr = [1,2,3,4,5,6,7,8,9,10];
-    function randSort1(arr){
-      for(var i = 0,len = arr.length;i &lt; len; i++ ){
-        var rand = parseInt(Math.random()*len);
-        var temp = arr[rand];
-        arr[rand] = arr[i];
-        arr[i] = temp;
-      }
-      return arr;
-    }
-    console.log(randSort1(arr));
-    
-  方法二：
-    var arr = [1,2,3,4,5,6,7,8,9,10];
-    function randSort2(arr){
-      var mixedArray = [];
-      while(arr.length &gt; 0){
-        var randomIndex = parseInt(Math.random()*arr.length);
-        mixedArray.push(arr[randomIndex]);
-        arr.splice(randomIndex, 1);
-      }
-      return mixedArray;
-    }
-    console.log(randSort2(arr));
-
-  方法三：
-    var arr = [1,2,3,4,5,6,7,8,9,10];
-    arr.sort(function(){
-      return Math.random() - 0.5;
-    })
-    console.log(arr);
-</code></pre>
-</li>
-<li>
+  
 <p>Javascript如何实现继承？</p>
 <pre><code> 1、构造继承
  2、原型继承
@@ -1247,7 +1194,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
 <p>参考阅读：<a href="http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html" rel="nofollow">undefined与null的区别</a></p>
 </li>
 <li>
-<p>写一个通用的事件侦听器函数。</p>
+<!-- <p>写一个通用的事件侦听器函数。</p>
 <pre><code>   // event(事件)工具集，来源：github.com/markyun
   markyun.Event = {
     // 页面加载完成后
@@ -1326,8 +1273,8 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
     }
   };
 </code></pre>
-</li>
-<li>
+</li> -->
+<!-- <li>
 <p>["1", "2", "3"].map(parseInt) 答案是多少？</p>
 <pre><code> parseInt() 函数能解析一个字符串，并返回一个整数，需要两个参数 (val, radix)，
  其中 radix 表示要解析的数字的基数。【该值介于 2 ~ 36 之间，并且字符串中的数字不能大于radix才能正确返回数字结果值】;
@@ -1345,7 +1292,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
  详细解析：http://blog.csdn.net/justjavac/article/details/19473199
 </code></pre>
 </li>
-<li>
+<li> -->
 <p>事件是？IE与火狐的事件机制有什么区别？ 如何阻止冒泡？</p>
 <pre><code>  1. 我们在网页中的某个操作（有的操作对应多个事件）。例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。
   2. 事件处理机制：IE是事件冒泡、Firefox同时支持两种事件模型，也就是：捕获型事件和冒泡型事件；
@@ -1514,7 +1461,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
 </code></pre>
 </li>
 <li>
-<p>页面编码和被请求的资源编码如果不一致如何处理？</p>
+<!-- <p>页面编码和被请求的资源编码如果不一致如何处理？</p>
 </li>
 <li>
 <p>服务器代理转发时，该如何处理cookie？</p>
@@ -1573,22 +1520,22 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
      // ...
  })
 </code></pre>
-</li>
-<li>
+</li> -->
+<!-- <li>
 <p>requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何
 缓存的？）</p>
 <pre><code> 参考：http://annn.me/how-to-realize-cmd-loader/
 </code></pre>
-</li>
-<li>
+</li> -->
+<!-- <li>
 <p>JS模块加载器的轮子怎么造，也就是如何实现一个模块加载器？</p>
-</li>
+</li> -->
 <li>
 <p>谈一谈你对ECMAScript6的了解？</p>
 </li>
-<li>
+<!-- <li>
 <p>ECMAScript6 怎么写class么，为什么会出现class这种东西?</p>
-</li>
+</li> -->
 <li>
 <p>异步加载JS的方式有哪些？</p>
 <pre><code>   (1) defer，只支持IE
@@ -1598,13 +1545,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
    (3) 创建script，插入到DOM中，加载完毕后callBack
 </code></pre>
 </li>
-<li>
-<p>documen.write和 innerHTML的区别</p>
-<pre><code>  document.write只能重绘整个页面
-
-  innerHTML可以重绘页面的一部分
-</code></pre>
-</li>
+ 
 <li>
 <p>DOM操作——怎样添加、移除、移动、复制、创建和查找节点?</p>
 <pre><code>  （1）创建新节点
@@ -1657,124 +1598,6 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
 <p>那些操作会造成内存泄漏？</p>
 </li>
 <li>
-<p>JQuery的源码看过吗？能不能简单概况一下它的实现原理？</p>
-</li>
-<li>
-<p>jQuery.fn的init方法返回的this指的是什么对象？为什么要返回this？</p>
-</li>
-<li>
-<p>jquery中如何将数组转化为json字符串，然后再转化回来？</p>
-</li>
-<li>
-<p>jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？</p>
-</li>
-<li>
-<p>jquery.extend 与 jquery.fn.extend的区别？</p>
-<pre><code> * jquery.extend 为jquery类添加类方法，可以理解为添加静态方法
- * jquery.fn.extend:
-  源码中jquery.fn = jquery.prototype，所以对jquery.fn的扩展，就是为jquery类添加成员函数
- 使用：
- jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展，所有jquery实例都可以直接调用。
-</code></pre>
-</li>
-<li>
-<p>jQuery 的队列是如何实现的？队列可以用在哪些地方？</p>
-</li>
-<li>
-<p>谈一下Jquery中的bind(),live(),delegate(),on()的区别？</p>
-</li>
-<li>
-<p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p>
-</li>
-<li>
-<p>是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？</p>
-</li>
-<li>
-<p>jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）</p>
-</li>
-<li>
-<p>针对 jQuery性能的优化方法？</p>
-</li>
-<li>
-<p>Jquery与jQuery UI 有啥区别？</p>
-<pre><code> *jQuery是一个js库，主要提供的功能是选择器，属性修改和事件绑定等等。
-
- *jQuery UI则是在jQuery的基础上，利用jQuery的扩展性，设计的插件。
-  提供了一些常用的界面元素，诸如对话框、拖动行为、改变大小行为等等
-</code></pre>
-</li>
-<li>
-<p>JQuery的源码看过吗？能不能简单说一下它的实现原理？</p>
-</li>
-<li>
-<p>jquery 中如何将数组转化为json字符串，然后再转化回来？</p>
-</li>
-</ul>
-<p>jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：</p>
-<pre><code> $.fn.stringifyArray = function(array) {
-      return JSON.stringify(array)
-  }
-
-  $.fn.parseArray = function(array) {
-      return JSON.parse(array)
-  }
-
-  然后调用：
-  $("").stringifyArray(array)
-</code></pre>
-<ul>
-<li>
-<p>jQuery和Zepto的区别？各自的使用场景？</p>
-</li>
-<li>
-<p>针对 jQuery 的优化方法？</p>
-<pre><code> *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
-
- *频繁操作的DOM，先缓存起来再操作。用Jquery的链式调用更好。
-  比如：var str=$("a").attr("href");
-
- *for (var i = size; i &lt; arr.length; i++) {}
-  for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快：
-  for (var i = size, length = arr.length; i &lt; length; i++) {}
-</code></pre>
-</li>
-<li>
-<p>Zepto的点透问题如何解决？</p>
-</li>
-<li>
-<p>jQueryUI如何自定义组件?</p>
-</li>
-<li>
-<p>需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</p>
-</li>
-<li>
-<p>如何判断当前脚本运行在浏览器还是node环境中？（阿里）</p>
-<pre><code>  this === window ? 'browser' : 'node';
-
-  通过判断Global对象是否为window，如果不为window，当前脚本没有运行在浏览器中
-</code></pre>
-</li>
-<li>
-<p>移动端最小触控区域是多大？</p>
-</li>
-<li>
-<p>jQuery 的 slideUp动画 ，如果目标元素是被外部事件驱动, 当鼠标快速地连续触发外部元素事件, 动画会滞后的反复执行，该如何处理呢?</p>
-<pre><code> jquery stop(): 如：$("#div").stop().animate({width:"100px"},100);
-</code></pre>
-</li>
-<li>
-<p>把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</p>
-</li>
-<li>
-<p>移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）</p>
-</li>
-<li>
-<p>知道各种JS框架(Angular, Backbone, Ember, React, Meteor, Knockout...)么? 能讲出他们各自的优点和缺点么?</p>
-</li>
-<li>
-<p>Underscore 对哪些 JS 原生对象进行了扩展以及提供了哪些好用的函数方法？</p>
-</li>
-<li>
 <p>解释JavaScript中的作用域与变量声明提升？</p>
 </li>
 <li>
@@ -1786,18 +1609,6 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
  闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）
 </code></pre>
 </li>
-<li>
-<p>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</p>
-<pre><code> * 多个事件同一个函数：
-  $("div").on("click mouseover", function(){});
- * 多个事件不同函数
-  $("div").on({
-    click: function(){},
-    mouseover: function(){}
-  });
-</code></pre>
-</li>
-<li>
 <p>Node.js的适用场景？</p>
 </li>
 <li>
@@ -1839,7 +1650,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   console.log(commafy(1234567.90)); //1,234,567.90
 </code></pre>
 </li>
-<li>
+<!-- <li>
 <p>检测浏览器版本版本有哪些方式？</p>
 <pre><code>  功能检测、userAgent特征检测
 
@@ -1847,25 +1658,21 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   //"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36
     (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
 </code></pre>
-</li>
-<li>
+</li> -->
+<!-- <li>
 <p>What is a Polyfill?</p>
 <pre><code>  polyfill 是“在旧版浏览器上复制标准 API 的 JavaScript 补充”,可以动态地加载 JavaScript 代码或库，在不支持这些标准 API 的浏览器中模拟它们。
   例如，geolocation（地理位置）polyfill 可以在 navigator 对象上添加全局的 geolocation 对象，还能添加 getCurrentPosition 函数以及“坐标”回调对象，
   所有这些都是 W3C 地理位置 API 定义的对象和函数。因为 polyfill 模拟标准 API，所以能够以一种面向所有浏览器未来的方式针对这些 API 进行开发，
   一旦对这些 API 的支持变成绝对大多数，则可以方便地去掉 polyfill，无需做任何额外工作。
 </code></pre>
-</li>
-<li>
-<p>做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？</p>
-<pre><code>  比如： html5shiv、Geolocation、Placeholder
-</code></pre>
-</li>
+</li> -->
+ 
 <li>
 <p>我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？</p>
 </li>
 <li>
-<p>使用JS实现获取文件扩展名？</p>
+<!-- <p>使用JS实现获取文件扩展名？</p>
 <pre><code>  function getFileExtension(filename) {
     return filename.slice((filename.lastIndexOf(".") - 1 &gt;&gt;&gt; 0) + 2);
   }
@@ -1874,7 +1681,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   对于'filename'和'.hiddenfile'，lastIndexOf的返回值分别为0和-1无符号右移操作符(»&gt;) 将-1转换为4294967295，将-2转换为4294967294，这个方法可以保证边缘情况时文件名不变。
   String.prototype.slice() 从上面计算的索引处提取文件的扩展名。如果索引比文件名的长度大，结果为""。
 </code></pre>
-</li>
+</li> -->
 <li>
 <p>Webpack热更新实现原理?</p>
 <pre><code>  1. Webpack编译期，为需要热更新的 entry 注入热更新代码(EventSource通信)
@@ -1915,123 +1722,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
 <h2><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6" aria-hidden="true" class="anchor" id="user-content-前端框架"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-other">前端框架</a></h2>
 <ul>
 <li>
-<p>React 使用场景？</p>
-<pre><code>   逻辑复杂单页应用，偏中后台管理系统，纯展示性的UI页面不合适、
-</code></pre>
-</li>
-<li>
-<p>描述一下React 生命周期</p>
-<pre><code>   渲染过程调用到的生命周期函数，主要几个要知道；
-    * constructor 
-    * getInitialState 
-    * getDefaultProps 
-    * componentWillMount 
-    * render 
-    * componentDidMount 
-
-    更新过程
-
-    * componentWillReceiveProps 
-    * shouldComponentUpdate 
-    * componentWillUpdate 
-    * render 
-    * componentDidUpdate 
-
-    卸载过程
-
-    componentWillUnmount
-</code></pre>
-</li>
-<li>
-<p>实现组件有哪些方式？</p>
-<pre><code>  React.createClass 使用API来定义组件
-  React ES6 class component 用 ES6 的class 来定义组件
-  Functional stateless component 通过函数定义无状态组件
-</code></pre>
-</li>
-<li>
-<p>应该在React生命周期的什么阶段发出ajax请求，为什么？</p>
-<pre><code>     AJAX请求应在 componentDidMount函数 进行请求。
-</code></pre>
-</li>
-<li>
-<p>shouldComponentUpdate函数有什么作用？</p>
-<pre><code>     shouldComponentUpdate是一个允许我们自行决定某些组件（以及他们的子组件）是否进行更新的生命周期函数，reconciliation的最终目的是尽可能以最有效的方式去根据新的state更新UI，
-      如果你已经知道UI的哪些状态无需进行改变，就没必要去让React去判断它是否该改变。 让shouldComponentUpdate返回falss, React就会让当前的组件和其子组件保持不变。
-</code></pre>
-</li>
-<li>
-<p>当组件的setState函数被调用之后，发生了什么？</p>
-<pre><code>     React会做的第一件事就是把你传递给setState的参数对象合并到组件原先的state。这个事件会导致一个“reconciliation”（调和）的过程。reconciliation的最终目标就是，
-      尽可能以最高效的方法，去基于新的state来更新UI。为了达到这个目的，React会构建一个React元素树（你可以把这个想象成一个表示UI的一个对象）。一旦这个树构建完毕，
-      React为了根据新的state去决定UI要怎么进行改变，它会找出这棵新树和旧树的不同之处。React能够相对精确地找出哪些位置发生了改变以及如何发生了什么变化，
-      并且知道如何只通过必要的更新来最小化重渲染。
-</code></pre>
-</li>
-<li>
-<p>为什么循环产生的组件中要利用上key这个特殊的prop？</p>
-<pre><code>     Keys负责帮助React跟踪列表中哪些元素被改变/添加/移除。React利用子元素的key在比较两棵树的时候，快速得知一个元素是新的还是刚刚被移除。没有keys，React也就不知道当前哪一个的item被移除了。
-</code></pre>
-</li>
-<li>
-<p>React-router 路由的实现原理？</p>
-</li>
-<li>
-<p>说说React Native,Weex框架的实现原理？</p>
-</li>
-<li>
-<p>受控组件(Controlled Component)与非受控组件(Uncontrolled Component)的区别</p>
-</li>
-<li>
-<p>refs 是什么?</p>
-<pre><code>   Refs是能访问DOM元素或组件实例的一个函数；
-</code></pre>
-</li>
-<li>
-<p>React为什么自己定义一套事件体系呢，与浏览器原生事件体系有什么关系？</p>
-</li>
-<li>
-<p>什么时候应该选择用class实现一个组件，什么时候用一个函数实现一个组件？</p>
-<pre><code>   组件用到了state或者用了生命周期函数，那么就该使用Class component。其他情况下，应使用Functional component。
-</code></pre>
-</li>
-<li>
-<p>什么是HoC（Higher-Order Component）？适用于什么场景？</p>
-<pre><code>   高阶组件就是一个 React 组件包裹着另外一个 React 组件
-</code></pre>
-</li>
-<li>
-<p>并不是父子关系的组件，如何实现相互的数据通信？</p>
-<pre><code>   使用父组件，通过props将变量传入子组件 （如通过refs，父组件获取一个子组件的方法，简单包装后，将包装后的方法通过props传入另一个子组件 ）
-</code></pre>
-</li>
-<li>
-<p>用过 React 技术栈中哪些数据流管理库？</p>
-<pre><code>   Redux\Dva
-</code></pre>
-</li>
-<li>
-<p>Redux是如何做到可预测呢？</p>
-</li>
-<li>
-<p>Redux将React组件划分为哪两种？</p>
-</li>
-<li>
-<p>Redux是如何将state注入到React组件上的？</p>
-</li>
-<li>
-<p>请描述一次完整的 Redux 数据流</p>
-</li>
-<li>
-<p>React的批量更新机制 BatchUpdates？</p>
-</li>
-<li>
-<p>React与Vue，各自的组件更新进行对比，它们有哪些区别？</p>
-</li>
-</ul>
-<h2><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98" aria-hidden="true" class="anchor" id="user-content-其他问题"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-other">其他问题</a></h2>
-<ul>
-<li>
+ 
 <p>原来公司工作流程是怎么样的，如何与其他人协作的？如何跨部门合作的？</p>
 </li>
 <li>
@@ -2084,36 +1775,7 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
     停止事件冒泡，IE 中阻止事件进一步冒泡，需要设置 cancelBubble 为 true，Mozzilla 中，需要调用 stopPropagation()；
 </code></pre>
 </li>
-<li>
-<p>99%的网站都需要被重构是那本书上写的？</p>
-<pre><code>  网站重构：应用web标准进行设计（第2版）
-</code></pre>
-</li>
-<li>
-<p>什么叫优雅降级和渐进增强？</p>
-<pre><code>  优雅降级：Web站点在所有新式浏览器中都能正常工作，如果用户使用的是老式浏览器，则代码会针对旧版本的IE进行降级处理了,使之在旧式浏览器上以某种形式降级体验却不至于完全不能用。
-  如：border-shadow
-
-  渐进增强：从被所有浏览器支持的基本功能开始，逐步地添加那些只有新版本浏览器才支持的功能,向页面增加不影响基础浏览器的额外样式和功能的。当浏览器支持时，它们会自动地呈现出来并发挥作用。
-  如：默认使用flash上传，但如果浏览器支持 HTML5 的文件上传功能，则使用HTML5实现更好的体验；
-</code></pre>
-</li>
-<li>
-<p>是否了解公钥加密和私钥加密。</p>
-<pre><code>  一般情况下是指私钥用于对数据进行签名，公钥用于对签名进行验证;
-  HTTP网站在浏览器端用公钥加密敏感数据，然后在服务器端再用私钥解密。
-</code></pre>
-</li>
-<li>
-<p>WEB应用从服务器主动推送Data到客户端有那些方式？</p>
-<pre><code>  html5提供的Websocket
-  不可见的iframe
-  WebSocket通过Flash
-  XHR长时间连接
-  XHR Multipart Streaming
-  &lt;script&gt;标签的长时间连接(可跨域)
-</code></pre>
-</li>
+ 
 <li>
 <p>对Node的优点和缺点提出了自己的看法？</p>
 <pre><code>  *（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，
@@ -2144,138 +1806,12 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
     （8） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
     对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的。
 </code></pre>
-</li>
-<li>
-<p>http状态码有那些？分别代表是什么意思？</p>
-<pre><code>   简单版
-    [
-      100  Continue 继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息
-      200  OK     正常返回信息
-      201  Created    请求成功并且服务器创建了新的资源
-      202  Accepted   服务器已接受请求，但尚未处理
-      301  Moved Permanently  请求的网页已永久移动到新位置。
-      302 Found     临时性重定向。
-      303 See Other   临时性重定向，且总是使用 GET 请求新的 URI。
-      304  Not Modified 自从上次请求后，请求的网页未修改过。
-
-      400 Bad Request  服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。
-      401 Unauthorized 请求未授权。
-      403 Forbidden   禁止访问。
-      404 Not Found   找不到如何与 URI 相匹配的资源。
-
-      500 Internal Server Error  最常见的服务器端错误。
-      503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。
-    ]
-
-    完整版
-    1**(信息类)：表示接收到请求并且继续处理
-    100——客户必须继续发出请求
-    101——客户要求服务器根据请求转换HTTP协议版本
-
-    2**(响应成功)：表示动作被成功接收、理解和接受
-    200——表明该请求被成功地完成，所请求的资源发送回客户端
-    201——提示知道新文件的URL
-    202——接受和处理、但处理未完成
-    203——返回信息不确定或不完整
-    204——请求收到，但返回信息为空
-    205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件
-    206——服务器已经完成了部分用户的GET请求
-
-    3**(重定向类)：为了完成指定的动作，必须接受进一步处理
-    300——请求的资源可在多处得到
-    301——本网页被永久性转移到另一个URL
-    302——请求的网页被转移到一个新的地址，但客户访问仍继续通过原始URL地址，重定向，新的URL会在response中的Location中返回，浏览器将会使用新的URL发出新的Request。
-    303——建议客户访问其他URL或访问方式
-    304——自从上次请求后，请求的网页未修改过，服务器返回此响应时，不会返回网页内容，代表上次的文档已经被缓存了，还可以继续使用
-    305——请求的资源必须从服务器指定的地址得到
-    306——前一版本HTTP中使用的代码，现行版本中不再使用
-    307——申明请求的资源临时性删除
-
-    4**(客户端错误类)：请求包含错误语法或不能正确执行
-    400——客户端请求有语法错误，不能被服务器所理解
-    401——请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用
-    HTTP 401.1 - 未授权：登录失败
-    　　HTTP 401.2 - 未授权：服务器配置问题导致登录失败
-    　　HTTP 401.3 - ACL 禁止访问资源
-    　　HTTP 401.4 - 未授权：授权被筛选器拒绝
-    HTTP 401.5 - 未授权：ISAPI 或 CGI 授权失败
-    402——保留有效ChargeTo头响应
-    403——禁止访问，服务器收到请求，但是拒绝提供服务
-    HTTP 403.1 禁止访问：禁止可执行访问
-    　　HTTP 403.2 - 禁止访问：禁止读访问
-    　　HTTP 403.3 - 禁止访问：禁止写访问
-    　　HTTP 403.4 - 禁止访问：要求 SSL
-    　　HTTP 403.5 - 禁止访问：要求 SSL 128
-    　　HTTP 403.6 - 禁止访问：IP 地址被拒绝
-    　　HTTP 403.7 - 禁止访问：要求客户证书
-    　　HTTP 403.8 - 禁止访问：禁止站点访问
-    　　HTTP 403.9 - 禁止访问：连接的用户过多
-    　　HTTP 403.10 - 禁止访问：配置无效
-    　　HTTP 403.11 - 禁止访问：密码更改
-    　　HTTP 403.12 - 禁止访问：映射器拒绝访问
-    　　HTTP 403.13 - 禁止访问：客户证书已被吊销
-    　　HTTP 403.15 - 禁止访问：客户访问许可过多
-    　　HTTP 403.16 - 禁止访问：客户证书不可信或者无效
-    HTTP 403.17 - 禁止访问：客户证书已经到期或者尚未生效
-    404——一个404错误表明可连接服务器，但服务器无法取得所请求的网页，请求资源不存在。eg：输入了错误的URL
-    405——用户在Request-Line字段定义的方法不允许
-    406——根据用户发送的Accept拖，请求资源不可访问
-    407——类似401，用户必须首先在代理服务器上得到授权
-    408——客户端没有在用户指定的饿时间内完成请求
-    409——对当前资源状态，请求不能完成
-    410——服务器上不再有此资源且无进一步的参考地址
-    411——服务器拒绝用户定义的Content-Length属性请求
-    412——一个或多个请求头字段在当前请求中错误
-    413——请求的资源大于服务器允许的大小
-    414——请求的资源URL长于服务器允许的长度
-    415——请求资源不支持请求项目格式
-    416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段
-    417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求长。
-
-    5**(服务端错误类)：服务器不能正确执行一个正确的请求
-    HTTP 500 - 服务器遇到错误，无法完成请求
-    　　HTTP 500.100 - 内部服务器错误 - ASP 错误
-    　　HTTP 500-11 服务器关闭
-    　　HTTP 500-12 应用程序重新启动
-    　　HTTP 500-13 - 服务器太忙
-    　　HTTP 500-14 - 应用程序无效
-    　　HTTP 500-15 - 不允许请求 global.asa
-    　　Error 501 - 未实现
-    HTTP 502 - 网关错误
-    HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时间后可能恢复正常
-</code></pre>
-</li>
-<li>
-<p>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</p>
-<pre><code>    注：这题胜在区分度高，知识点覆盖广，再不懂的人，也能答出几句，
-    而高手可以根据自己擅长的领域自由发挥，从URL规范、HTTP协议、DNS、CDN、数据库查询、
-    到浏览器流式解析、CSS规则构建、layout、paint、onload/domready、JS执行、JS API绑定等等；
-
-    详细版：
-    1、浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;
-    2、调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;
-      3、通过DNS解析获取网址的IP地址，设置 UA 等信息发出第二个GET请求;
-    4、进行HTTP协议会话，客户端发送报头(请求报头);
-      5、进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;
-      6、进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;
-    7、处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回304;
-      8、浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;
-      9、文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;
-      10、页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。
-
-    简洁版：
-    浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；
-    服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；
-    浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；
-    载入解析到的资源文件，渲染页面，完成。
-</code></pre>
-</li>
+</li> 
+ 
 <li>
 <p>部分地区用户反应网站很卡，请问有哪些可能性的原因，以及解决方法？</p>
 </li>
-<li>
-<p>从打开app到刷新出内容，整个过程中都发生了什么，如果感觉慢，怎么定位问题，怎么解决?</p>
-</li>
+ 
 <li>
 <p>第一次访问页面中时弹出引导，用户关闭引导，之后再次进入页面时不希望出现引导，如何实现？</p>
 <pre><code>   localStorage
@@ -2284,52 +1820,12 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
 <li>
 <p>除了前端以外还了解什么其它技术么？你最最厉害的技能是什么？</p>
 </li>
-<li>
-<p>你用的得心应手用的熟练地编辑器&amp;开发环境是什么样子？</p>
-<pre><code>  Sublime Text 3 + 插件
-  Google chrome 查看页面UI、动画效果和交互功能，Firebug 兼容测试和
-  Node.js + webpack
-  Git 版本控制和Code Review
-</code></pre>
-</li>
-<li>
-<p>对前端工程师这个职位是怎么样理解的？它的前景会怎么样？</p>
-<pre><code>  前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
-  1、实现界面交互
-  2、提升用户体验
-  3、有了Node.js，前端可以实现服务端的一些事情
-
-
-  前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
-
-  参与项目，快速高质量完成实现效果图，精确到1px；
-
-  与团队成员，UI设计，产品经理的沟通；
-
-  做好的页面结构，页面重构和用户体验；
-
-  处理hack，兼容、写出优美的代码格式；
-
-  针对服务器的优化、拥抱最新前端技术。
-</code></pre>
-</li>
-<li>
-<p>你怎么看待Web App 、hybrid App、Native App？</p>
-</li>
+ 
 <li>
 <p>你移动端前端开发的理解？（和 Web 前端开发的主要区别是什么？）</p>
 </li>
-<li>
-<p>产品进行版本升级时，可能发生不兼容性问题，如何提前预防和解决？</p>
-<pre><code>  非覆盖式发布，API新增而不是在原来的上面修改；
-  提前做好 @Deprecated的版本提示；
-</code></pre>
-</li>
-<li>
-<p>你对加班的看法？</p>
-<pre><code>  加班就像借钱，原则应当是------救急不救穷
-</code></pre>
-</li>
+ 
+<!--  
 <li>
 <p>平时如何管理你的项目？</p>
 <pre><code>  先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等；
@@ -2347,200 +1843,36 @@ CSS3加入的媒体查询使得无需修改内容便可以使样式应用于某�
   图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理
 </code></pre>
 </li>
-<li>
-<p>如何设计突发大规模并发架构？</p>
-</li>
-<li>
-<p>当团队人手不足，把功能代码写完已经需要加班的情况下，你会做前端代码的测试吗？</p>
-</li>
-<li>
-<p>说说最近最流行的一些东西吧？常去哪些网站？</p>
-<pre><code>   ES6\WebAssembly\Node\MVVM\Web Components\React\React Native\Webpack 组件化
-</code></pre>
-</li>
-<li>
-<p>知道什么是SEO并且怎么优化么? 知道各种meta data的含义么?</p>
-</li>
-<li>
-<p>移动端（Android IOS）怎么做好用户体验?</p>
-<pre><code>  清晰的视觉纵线、
-  信息的分组、极致的减法、
-  利用选择代替输入、
-  标签及文字的排布方式、
-  依靠明文确认密码、
-  合理的键盘利用、
-</code></pre>
-</li>
-<li>
-<p>简单描述一下你做过的移动APP项目研发流程？</p>
-</li>
-<li>
-<p>你在现在的团队处于什么样的角色，起到了什么明显的作用？</p>
-</li>
-<li>
-<p>你认为怎样才是全端工程师（Full Stack developer）？</p>
-</li>
-<li>
-<p>介绍一个你最得意的作品吧？</p>
-</li>
-<li>
-<p>你有自己的技术博客吗，用了哪些技术？</p>
-</li>
+   -->
+ 
 <li>
 <p>对前端安全有什么看法？</p>
 </li>
-<li>
-<p>是否了解Web注入攻击，说下原理，最常见的两种攻击（XSS 和 CSRF）了解到什么程度？</p>
+ 
+ <li>
+  <p>1、做过最满意的项目是什么？</p>
+
+项目背景
+
+  <pre><code>为什么要做这件事情？
+
+  最终达到什么效果？
+
+  你处于什么样的角色，起到了什么方面的作用？
+
+  在项目中遇到什么技术问题？具体是如何解决的？
+
+  如果再做这个项目，你会在哪些方面进行改善？
+  </code></pre>
 </li>
-<li>
-<p>项目中遇到国哪些印象深刻的技术难题，具体是什么问题，怎么解决？。</p>
-</li>
-<li>
-<p>最近在学什么东西？</p>
-</li>
-<li>
-<p>你的优点是什么？缺点是什么？</p>
-</li>
-<li>
-<p>如何管理前端团队?</p>
-</li>
-<li>
-<p>最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p>
-</li>
-</ul>
-<h2><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%AB%99%E6%8E%A8%E8%8D%90" aria-hidden="true" class="anchor" id="user-content-前端学习网站推荐"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-web">前端学习网站推荐</a></h2>
-<pre><code>1. 极客标签：     http://www.gbtags.com/
+  
+<p>2、你有没有使用JavaScript模板？  </p>
 
-2. 码农周刊：     http://weekly.manong.io/issues/
+<p>3、内存泄露、ES6……</p>
 
-3. 前端周刊：     http://www.feweekly.com/issues
-
-4. 慕课网：       http://www.imooc.com/
-
-5. div.io：     http://div.io
-
-6. Hacker News： https://news.ycombinator.com/news
-
-7. InfoQ：       http://www.infoq.com/
-
-8. w3cplus：     http://www.w3cplus.com/
-
-9. Stack Overflow： http://stackoverflow.com/
-
-10.w3school：    http://www.w3school.com.cn/
-
-11.mozilla：     https://developer.mozilla.org/zh-CN/docs/Web/JavaScript
-</code></pre>
-<h2><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E6%96%87%E6%A1%A3%E6%8E%A8%E8%8D%90" aria-hidden="true" class="anchor" id="user-content-文档推荐"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><a name="user-content-web">文档推荐</a></h2>
-<ol>
-<li>
-<p><a href="http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html" title="jQuery 基本原理" rel="nofollow">jQuery 基本原理</a></p>
-</li>
-<li>
-<p><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/" rel="nofollow">JavaScript 秘密花园</a></p>
-</li>
-<li>
-<p><a href="http://css.doyoe.com/" rel="nofollow">CSS参考手册</a></p>
-</li>
-<li>
-<p><a href="http://javascript.ruanyifeng.com/" rel="nofollow">JavaScript 标准参考教程</a></p>
-</li>
-<li>
-<p><a href="http://es6.ruanyifeng.com/" rel="nofollow">ECMAScript 6入门</a></p>
-</li>
-</ol>
-<p><strong>备注：</strong></p>
-<pre><code>根据自己需要选择性阅读，面试题是对理论知识的总结，让自己学会应该如何表达。
-
-资料答案不够正确和全面，欢迎欢迎Star和提交issues。
-
-格式不断修改更新中。
-
-在 github 项目的右上角，有三个按钮,分别是 watch、star、fork，新来的同学注意不要用错了，无休止的邮件提醒会给你造成不必要的信息干扰。
-
-当你选择Watching，表示你以后会关注这个项目的全部动态，以后只要这个项目发生变动，被别人提交了pull request、被发起了issue等情况你都会收到邮件通知。
-
-star相当于是点赞或收藏，方便以后查找。
-
-fork表示你想要补充完善这个项目的内容。
-
-更新记录：
-2018-01-14： 公司在招聘前端，使用react技术栈；借此机会更新一波前端框架相关的题目；
-2016-10-20： 更新一些已被发现的问题。
-2016-03-25： 新增ECMAScript6 相关问题
-</code></pre>
-<h3><a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers#%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4--2018-01-14" aria-hidden="true" class="anchor" id="user-content-更新时间--2018-01-14"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>更新时间:  2018-01-14</h3>
-<pre><code>爱机车、爱骑行、爱旅行、爱摄影、爱阅读的前端开发攻城师。
-
-我的微博：http://weibo.com/920802999
-</code></pre>
-</article>
-  </div>
-
-
-  </div>
-  <div class="modal-backdrop js-touch-events"></div>
-</div>
-
-    </div>
-  </div>
-
-  </div>
-
-      
-<div class="footer container-lg px-3" role="contentinfo">
-  <div class="position-relative d-flex flex-justify-between py-6 mt-6 f6 text-gray border-top border-gray-light ">
-    <ul class="list-style-none d-flex flex-wrap ">
-      <li class="mr-3">© 2018 <span title="0.13392s from unicorn-1388877136-j9k10">GitHub</span>, Inc.</li>
-        <li class="mr-3"><a href="https://help.github.com/articles/github-terms-of-service/" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
-        <li class="mr-3"><a href="https://github.com/site/privacy" data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
-        <li class="mr-3"><a href="https://help.github.com/articles/github-security/" data-ga-click="Footer, go to security, text:security">Security</a></li>
-        <li class="mr-3"><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
-        <li><a href="https://help.github.com/" data-ga-click="Footer, go to help, text:help">Help</a></li>
-    </ul>
-
-    <a href="https://github.com/" aria-label="Homepage" class="footer-octicon" title="GitHub">
-      <svg aria-hidden="true" class="octicon octicon-mark-github" height="24" version="1.1" viewBox="0 0 16 16" width="24"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
-</a>
-    <ul class="list-style-none d-flex flex-wrap ">
-        <li class="mr-3"><a href="https://github.com/contact" data-ga-click="Footer, go to contact, text:contact">Contact GitHub</a></li>
-      <li class="mr-3"><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
-      <li class="mr-3"><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
-      <li class="mr-3"><a href="https://shop.github.com/" data-ga-click="Footer, go to shop, text:shop">Shop</a></li>
-        <li class="mr-3"><a href="https://github.com/blog" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
-        <li><a href="https://github.com/about" data-ga-click="Footer, go to about, text:about">About</a></li>
-
-    </ul>
-  </div>
-</div>
-
-
-
-  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
-    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
-    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
-      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
-    </button>
-    You can't perform that action at this time.
-  </div>
-
-
-     
-    
-    
-  <div class="js-stale-session-flash stale-session-flash flash flash-warn flash-banner d-none">
-    <svg aria-hidden="true" class="octicon octicon-alert" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg>
-    <span class="signed-in-tab-flash">You signed in with another tab or window. <a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers">Reload</a> to refresh your session.</span>
-    <span class="signed-out-tab-flash">You signed out in another tab or window. <a href="https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers">Reload</a> to refresh your session.</span>
-  </div>
-  <div class="facebox" id="facebox" style="display:none;">
-  <div class="facebox-popup">
-    <div class="facebox-content" role="dialog" aria-labelledby="facebox-header" aria-describedby="facebox-description">
-    </div>
-    <button type="button" class="facebox-close js-facebox-close" aria-label="Close modal">
-      <svg aria-hidden="true" class="octicon octicon-x" height="16" version="1.1" viewBox="0 0 12 16" width="12"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48z"></path></svg>
-    </button>
-  </div>
+<p>4、性能优化：压缩合并、阻塞渲染……</p></p>
+ </li>
+</ul> 
 </div>
 
   

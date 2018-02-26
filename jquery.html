@@ -48,8 +48,7 @@
 <p>接下来通过在&lt;script&gt;&nbsp;$(function(){ }); &lt;/script&gt;</p>
 <h2>2.你为什么要使用jquery？</h2>
 <p>答：因为jQuery是轻量级的框架，大小不到30kb,它有强大的选择器，出色的DOM操作的封装，有可靠的事件处理机制(jQuery在处理事件绑定的时候相当的可靠)，完善的ajax(它的ajax封装的非常的好，不需要考虑复杂浏览器的兼容性和XMLHttpRequest对象的创建和使用的问题。)&nbsp;出色的浏览器的兼容性。&nbsp;而且支持链式操作，隐式迭代。行为层和结构层的分离，还支持丰富的插件，jquery的文档也非常的丰富。<a style="font-size: 1.5em; line-height: 1.5; background-color: #ffffff;" name="t2"></a></p>
-<p>&nbsp;</p>
-<h2>&nbsp;3.你觉得jquery有哪些好处？&nbsp;答案同上</h2>
+<p>&nbsp;</p> 
 <h2>4&nbsp;&nbsp;你使用jquery遇到过哪些问题，你是怎么解决的？</h2>
 <p>答：这个答案是开发的，看你是否有相关的项目经验。</p>
 <p>例前台拿不到值，JSON&nbsp;可是出现的错误(多了一个空格等)这编译是不会报错的&nbsp;jquery库与其他库冲突：</p>
@@ -60,22 +59,14 @@
 <p>2&gt;如果jquery库在其他库之前导入就直接使用jquery</p>
 <p>今天在处理一个数据问题时，发现jQuery.ajax()方法返回的值一直有问题，清除缓存后数据无误，多次测试后发现返回的值都是之前的值，并且一直未执行url(后台为JAVA，设置断点一直未进入)。在网上查找下,发现是未设置type的原因。&nbsp;如果没设置jQuery.ajax的type="Post"，那么ajax就会默认type="Get"，这就会导致之前数据被缓存起来。加上type="Post"，问题解决！&nbsp;</p>
 <h2>5&nbsp;&nbsp;你知道jquery中的选择器吗，请讲一下有哪些选择器？</h2>
-<p>答&nbsp;：jQuery中的选择器大致分为:基本选择器，层次选择器，过滤选择器，表单选择器</p>
-<h2><a name="t5"></a>6&nbsp;&nbsp;jquery中的选择器&nbsp;和&nbsp;css中的选择器有区别吗？</h2>
+<p>答&nbsp;：jQuery中的选择器大致分为:基本选择器，层次选择器，过滤选择器，表单选择器</p> 
 <p>答：jQuery选择器支持CSS里的选择器，jQuery选择器可用来添加样式和添加相应的行为CSS&nbsp;中的选择器是只能添加相应的样式</p>
 <h2><a name="t6"></a>7&nbsp;&nbsp;你觉得jquery中的选择器有什么优势？</h2>
-<p>答：简单的写法&nbsp;&nbsp;$('ID')&nbsp;来代替&nbsp;document.getElementById()函数</p>
-<p>支持CSS1&nbsp;到CSS3&nbsp;选择器完善的处理机制(就算写错了id也不会报错)</p>
-<h2><a name="t7"></a>8&nbsp;&nbsp;你在使用选择器的时候有有没有什么觉得要注意的地方？</h2>
-<p>答:&nbsp;1&nbsp;选择器中含有".","#","["&nbsp;等特殊字符的时候需要进行转译</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;属性选择器的引号问题</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;选择器中含有空格的注意事项</p>
+<p>答：简单的写法&nbsp;&nbsp;$('ID')&nbsp;来代替&nbsp;document.getElementById()函数</p> 
 <h2><a name="t8"></a>9&nbsp;&nbsp;jquery对象和dom对象是怎样转换的？</h2>
 <p>答&nbsp;：jquery转DOM对象:jQuery&nbsp;对象是一个数组对象，可以通过[index]的丰富得到相应的DOM对象还可以通过get[index]去得到相应的DOM对象。DOM对象转jQuery对象:$(DOM对象)</p>
 <h2><a name="t9"></a>10&nbsp;&nbsp;你是如何使用jquery中的ajax的？</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;答:&nbsp;如果是一些常规的ajax程序的话，使用load(),$.get(),$.post(),就可以搞定了，一般我会使用的是$.post()&nbsp;方法。如果需要设定beforeSend(提交前回调函数),error(失败后处理),success(成功后处理)及complete(请求完成后处理)回调函数等，这个时候我会使用$.ajax()</p>
-<h2><a name="t10"></a>11&nbsp;&nbsp;你觉得jquery中的ajax好用吗，为什么？</h2>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;答:&nbsp;好用的。&nbsp;因为jQuery提供了一些日常开发中夙瑶的快捷操作，例&nbsp;load，ajax，get，post等等，所以使用jQuery开发ajax将变得极其简单，我们就可以集中精力在业务和用户的体验上，不需要去理会那些繁琐的XMLHttpRequest对象了。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;答:&nbsp;如果是一些常规的ajax程序的话，使用load(),$.get(),$.post(),就可以搞定了，一般我会使用的是$.post()&nbsp;方法。如果需要设定beforeSend(提交前回调函数),error(失败后处理),success(成功后处理)及complete(请求完成后处理)回调函数等，这个时候我会使用$.ajax()</p>  
 <h2><a name="t11"></a>12&nbsp;jquery中$.get()提交和$.post()提交有区别吗？</h2>
 <p>答:&nbsp;&nbsp;1&nbsp;$.get()&nbsp;方法使用GET方法来进行异步请求的。$.post()&nbsp;方法使用POST方法来进行异步请求的。</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;get请求会将参数跟在URL后进行传递，而POST请求则是作为HTTP消息的实体内容发送给Web服务器的，这种传递是对用户不可见的。</p>
@@ -139,33 +130,17 @@
 <h2><a name="t31"></a>35&nbsp;$.getScript()方法&nbsp;和&nbsp;$.getJson()&nbsp;方法有什么区别？</h2>
 <p>答:&nbsp;1&nbsp;$.getScript()&nbsp;方法可以直接加载.js文件，并且不需要对javascript文件进行处理，javascript文件会自动执行。</p>
 <p>2&nbsp;$.getJson()&nbsp;是用于加载JSON&nbsp;文件的&nbsp;，用法和$.getScript()&nbsp;</p>
-<h2><a name="t32"></a>36&nbsp;你读过有关于jQuery的书吗？</h2>
-<p>《jquery基础教程》&nbsp;《jquery实战》《锋利的jquery》&nbsp;《巧用jquery》&nbsp;&nbsp;《jQuery用户界面库学习指南》等</p>
+ 
 <h2><a name="t33"></a>37&nbsp;$("#msg").text();&nbsp;和&nbsp;$("#msg").text("&lt;b&gt;new&nbsp;content&lt;/b&gt;");有什么区别？</h2>
 <p>答：1&nbsp;$("#msg").text()&nbsp;是&nbsp;返回id为msg的元素节点的文本内容&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 <p>&nbsp;&nbsp; 2&nbsp;$("#msg").text("&lt;b&gt;new&nbsp;content&lt;/b&gt;");&nbsp;是&nbsp;将“&lt;b&gt;new&nbsp;content&lt;/b&gt;”&nbsp;作为普通文本串写入id为msg的元素节点内容中,&nbsp;页面显示粗体的&lt;b&gt;new&nbsp;content&lt;/b&gt;</p>
 <h2><a name="t34"></a>38&nbsp;radio单选组的第二个元素为当前选中值，该怎么去取？</h2>
 <p>答&nbsp;:&nbsp;$('input[name=items]').get(1).checked&nbsp;=&nbsp;true;&nbsp;</p>
-<h2><a name="t35"></a>39&nbsp;选择器中&nbsp;id，class有什么区别？</h2>
-<p>答：在网页中&nbsp;每个id名称只能用一次，class可以允许重复使用</p>
-<h2><a name="t36"></a>40&nbsp;你使用过哪些数据格式，它们各有什么特点？</h2>
-<p>答:&nbsp;HTML格式&nbsp;,JSON格式,javascript格式,XML格式</p>
-<p>1&nbsp;HTML片段提供外部数据一般来说是最简单的。</p>
-<p>2&nbsp;如果数据需要重用，而且其他应用程序也可能一次受到影响，那么在性能和文件大小方面具有优势的JSON通常是不错的选择。</p>
-<p>3&nbsp;而当远程应用程序未知时，XML则能够为良好的互操作性提供最可靠的保证。</p>
-<h2><a name="t37"></a>41&nbsp;jQuery&nbsp;能做什么？</h2>
-<p>答：1&nbsp;获取页面的元素&nbsp;</p>
-<p>2&nbsp;修改页面的外观</p>
-<p>3&nbsp;改变页面大的内容</p>
-<p>4&nbsp;响应用户的页面操作</p>
-<p>5&nbsp;为页面添加动态效果</p>
-<p>6&nbsp;无需刷新页面，即可以从服务器获取信息</p>
-<p>7&nbsp;简化常见的javascript任务</p>
+ 
+  
 <h2><a name="t38"></a>42&nbsp;在ajax中data主要有几种方式？</h2>
 <p>答&nbsp;：&nbsp;三种，html拼接的，json数组，form表单经serialize()序列化的。</p>
-<h2><a name="t39"></a>43&nbsp;：jQuery中的hover()和toggle()有什么区别？</h2>
-<p>答&nbsp;hover()和toggle()都是jQuery中两个合成事件。</p>
-<p>hover()方法用于模拟光标悬停事件。&nbsp;toggle()方法是连续点击事件。</p>
+  
 <h2><a name="t40"></a>44&nbsp;你知道jQuery中的事件冒泡吗，它是怎么执行的，何如来停止冒泡事件？</h2>
 <p>答&nbsp;:&nbsp;知道,事件冒泡是从里面的往外面开始触发。在jQuery中提供了stopPropagation()方法可以停止冒泡。</p>
 <h2><a name="t41"></a>45&nbsp;例如&nbsp;单击超链接后会自动跳转，单击"提交"按钮后表单会提交等，有时候我想阻止这些默认的行为，该怎么办？</h2>
@@ -183,6 +158,180 @@
 <p>iv.&nbsp;4.避免在插件内部使用$作为jQuery对象的别名,而应使用完整的jQuery来表示，这样可以避免冲突或使用闭包来避免</p>
 <p>v.&nbsp;5.所有的方法或函数插件，都应当一分好结尾，否则压缩的时候可能出现问题。在插件头部加上分号，这样可以避免他人的不规范代码给插件带来影响</p>
 <p>vi.&nbsp;6.在插件中通过$.extent({})封装全局函数,选择器插件，扩展已有的object对象通过$.fn.extend({})封装对象方法插件</p></div><div id="MySignature"></div>
+
+
+  
+<li>
+<p><h2>需求：实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</h2></p>
+</li>
+<li>
+<p><h2>如何判断当前脚本运行在浏览器还是node环境中？（阿里）</h2></p>
+<pre><code>  this === window ? 'browser' : 'node';
+
+  通过判断Global对象是否为window，如果不为window，当前脚本没有运行在浏览器中
+</code></pre>
+</li>
+ 
+ 
+<li>
+<p><h2>把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</h2></p>
+    <p>
+        1、可以放在head标签里面，引用外部文件或者直接在script标签里写；不过要确保页面所有元素加载完成后才能调用，也就是说要添加一个onload函数。<br><br>
+
+        2、放在body结束之前可以避免这种情况，因为浏览器是从上到下进行渲染的，所以，当前面的元素都被渲染完之后才执行javascript代码。
+    </p>
+</li>
+<li>
+
+<li> 
+    <h2>移动端的点击事件的有延迟，时间是多久，为什么会有？ 怎么解决这个延时？</h2>
+<p>
+（click 有 300ms 延迟,为了实现safari的双击事件的设计，浏览器要知道你是不是要双击操作。）</p>
+</li>
+ 
+ 
+
+<li>
+<p><h2>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</h2></p>
+<pre><code> * 多个事件同一个函数：
+  $("div").on("click mouseover", function(){});
+ * 多个事件不同函数
+  $("div").on({
+    click: function(){},
+    mouseover: function(){}
+  });
+</code></pre>
+</li>
+<li>
+<p><h2>JQuery的源码看过吗？能不能简单概况一下它的实现原理？</h2></p>
+<p>主要从闭包实现模块、ready的实现、内部变量引入全局作用域等方面来说。</p>
+</li>
+ 
+<li>
+<h2>jquery中如何将数组转化为json字符串，然后再转化回来？</h2></p>
+<p> 现代浏览器中提供了JSON.stringify()方法 将数组，对象转成json。</p>
+<p>JSON.stringify 把一个对象转换成json字符串， </p>
+<p>JSON.parse 把一个json字符串解析成对象。</p>
+
+不支持的可以引入json2.js
+</p>
+</li>
+<li>
+<p><h2>jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？</h2></p>
+</li>
+<li>
+<p><h2>jquery.extend 与 jquery.fn.extend的区别？</h2></p>
+<pre><code> * jquery.extend 为jquery类添加类方法，可以理解为添加静态方法
+ * jquery.fn.extend:
+  源码中jquery.fn = jquery.prototype，所以对jquery.fn的扩展，就是为jquery类添加成员函数
+ 使用：
+ jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展，所有jquery实例都可以直接调用。
+</code></pre>
+</li>
+<li>
+<p><h2>jQuery 的队列是如何实现的？队列可以用在哪些地方？</h2></p>
+<p>从上图可以看出，既有静态方法，又有实例方法。queue方法，相当于数组中的push操作。dequeue相当于数组的shift操作。举个例子：
+<pre><code>
+function aaa(){
+
+　　alert(1);
+
+}
+
+function bbb(){
+
+　　alert(2);
+
+}
+
+$.queue(document,"q1",aaa);   //在document下创建一个队列q1，并往q1队列中添加aaa函数。
+
+$.queue(document,"q1",bbb);  //在document下取队列q1，并且往q1队列中添加bbb函数。
+
+$.queue(document,"q1",[aaa,bbb]);  //跟上面两行代码的效果一样，一次性添加多个函数
+
+console.log($.queue(document,"q1"))   //打印出，document下的队列q1的值，结果是:[aaa(),bbb()]
+
+队列中存储的必须是函数。
+
+$.dequeue(document,"q1")    //取出队列中的第一项，这里是aaa，然后执行aaa函数，弹出1.
+
+$.dequeue(document,"q1")     //取出队列中的第一项，因为aaa已经出队了，所以这时的第一项是bbb，因此执行bbb函数，弹出2。
+
+以上调用的是静态方法，那么实例方法如何调用呢？
+
+$(document).queue("q1",aaa);   //入队
+
+$(document).queue("q1",bbb);  //入队
+
+$(document).dequeue("q1");     //出队，执行aaa函数。
+
+$(document).dequeue("q1");    //出队执行bbb函数
+
+队列在前端开发中有什么作用呢?请看下面这个例子：
+
+div1的宽度和高度是100，left是0.
+
+$("#div1").click(function(){
+
+　　$(this).animate({width:300},2000);   //通过setInterval来实现，在两秒中，把div1的宽度从100变成300
+
+　　$(this).animate({height:300},2000);   //以此类推
+
+　　$(this).animate({left:300},2000);    //以此类推
+
+})
+</code></pre>
+</p>
+</li>
+ 
+<li>
+<p><h2>JQuery一个对象可以同时绑定多个事件，这是如何实现的？</h2></p>
+
+<code><pre>
+第一种：绑定至指定函数。
+你可以先单独写个function来实现keyup事件的处理(例如，函数名为doIt)，然后把#begin/#end对象的keyup事件绑定到前面写的函数上。
+$("#begin").bind("keyup",doIt);
+$("#end").bind("keyup",doIt);<Br>
+第二种：莎拉凯瑞写得这种很方便，即选择器的使用。
+$("#begin,#end").keyup(function(){......});
+</code></pre>
+
+</li>
+<li>
+<p><h2>是否知道自定义事件。jQuery里的fire函数是什么意思，什么时候用？</h2></p>
+</li>
+<li>
+<p><h2>jQuery 是通过哪个方法和 Sizzle 选择器结合的？（jQuery.fn.find()进入Sizzle）</h2></p>
+</li>
+<li>
+<p><h2>针对 jQuery性能的优化方法？</h2></p>
+<div>
+    <pre><code> *基于Class的选择性的性能相对于Id选择器开销很大，因为需遍历所有DOM元素。
+
+ *频繁操作的DOM，先缓存起来再操作。用Jquery的链式调用更好。
+  比如：var str=$("a").attr("href");
+
+ *for (var i = size; i &lt; arr.length; i++) {}
+  for 循环每一次循环都查找了数组 (arr) 的.length 属性，在开始循环的时候设置一个变量来存储这个数字，可以让循环跑得更快：
+  for (var i = size, length = arr.length; i &lt; length; i++) {}
+</code></pre>
+</div>
+</li>
+ 
+</ul>
+<p><h2>jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展：</h2></p>
+<pre><code> $.fn.stringifyArray = function(array) {
+      return JSON.stringify(array)
+  }
+
+  $.fn.parseArray = function(array) {
+      return JSON.parse(array)
+  }
+
+  然后调用：
+  $("").stringifyArray(array)
+</code></pre> 
 <div class="clear"></div>
  
 
