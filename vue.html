@@ -1,138 +1,226 @@
-<!DOCTYPE html>
-<!-- saved from url=(0038)https://www.jianshu.com/p/e54a9a34a773 -->
-<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head >
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1"
+        media="(device-height: 568px)" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="full-screen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="address=no" />
+   
   
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+<style>
+#float-search{
+	height:40px;
+	background:red;
+	position:fixed;
+	top:0;
+	width:100%;
+	
+}
+#float-search input{
+	height:36px;
+	border:1px solid #ccc;
+	width:100px
  
-
-    <title>整理前端面试题(十一): Vue面试题合集 - 简书</title>
-  
-  <link rel="stylesheet" media="all" href="vue.css">
+}
+</style>   
+</head>
  
-
-  </head>
-
-  <body lang="zh-CN" class="reader-black-font">
- 
-    
-<div class="note">
-  <a target="_blank" href="https://www.jianshu.com/apps/download?utm_source=sbc" id="web-note-ad-fixed" style="left: 1331.5px; display: none;"><span class="close">×</span></a>
-  <div class="post">
-    <div class="article">
-        <h1 class="title">整理前端面试题(十一): Vue面试题合集</h1>
-
-        <!-- 作者区域 -->
-        <div class="author">
-          <a class="avatar" href="https://www.jianshu.com/u/e80a34fa625b">
-            <img src="/1cb2a9f1-eccd-4ee1-ac96-3d534544d108.jpg" alt="96">
-</a>          <div class="info">
-            <span class="name"><a href="https://www.jianshu.com/u/e80a34fa625b">Lee_tanghui</a></span>
-            <!-- 关注用户按钮 -->
-            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
-            <!-- 文章数据信息 -->
-            <div class="meta">
-              <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
-                <span class="publish-time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最后编辑于 2017.12.10 05:32">2017.09.01 19:47*</span>
-              <span class="wordage">字数 1103</span>
-            <span class="views-count">阅读 4297</span><span class="comments-count">评论 0</span><span class="likes-count">喜欢 44</span></div>
-          </div>
-          <!-- 如果是当前作者，加入编辑按钮 -->
-        </div>
-
-        <!-- 文章内容 -->
-        <div data-note-content="" class="show-content">
-          <div class="show-content-free">
-            <div class="image-package">
-<div class="image-container" style="max-width: 700px; max-height: 527px; background-color: transparent;">
-<div class="image-container-fill" style="padding-bottom: 59.75%;"></div>
-<div class="image-view" data-width="882" data-height="527"><img   style="cursor: zoom-in;" src="vue01.png"></div>
-</div>
-<div class="image-caption">Vue.js</div>
-</div>
-<h3><strong>一. 请谈谈Vue中的MVVM模式</strong></h3>
-<p>MVVM全称是Model-View-ViewModel</p>
-<p>Vue是以数据为驱动的，Vue自身将DOM和数据进行绑定，一旦创建绑定，DOM和数据将保持同步，每当数据发生变化，DOM会跟着变化。  ViewModel是Vue的核心，它是Vue的一个实例。Vue实例时作用域某个HTML元素上的这个HTML元素可以是body，也可以是某个id所指代的元素。</p>
-<p>DOMListeners和DataBindings是实现双向绑定的关键。DOMListeners监听页面所有View层DOM元素的变化，当发生变化，Model层的数据随之变化；DataBindings监听Model层的数据，当数据发生变化，View层的DOM元素随之变化。</p>
-<hr>
-<h3><strong>二. <code>v-show</code>和<code>v-if</code>指令的共同点和不同点?</strong></h3>
-<ul>
-<li>
-<code>v-show</code>指令是通过修改元素的<code>display</code>CSS属性让其显示或者隐藏</li>
-<li>
-<code>v-if</code>指令是直接销毁和重建DOM达到让元素显示和隐藏的效果</li>
-</ul>
-<hr>
-<h3><strong>三. 如何让CSS只在当前组件中起作用?</strong></h3>
-<p>将当前组件的<code>&lt;style&gt;</code>修改为<code>&lt;style scoped&gt;</code></p>
-<hr>
-<h3><strong>四. <code>&lt;keep-alive&gt;&lt;/keep-alive&gt;</code>的作用是什么?</strong></h3>
-<p><code>&lt;keep-alive&gt;&lt;/keep-alive&gt;</code> 包裹动态组件时，会缓存不活动的组件实例,主要用于保留组件状态或避免重新渲染。</p>
-<p>大白话: 比如有一个列表和一个详情，那么用户就会经常执行打开详情=&gt;返回列表=&gt;打开详情…这样的话列表和详情都是一个频率很高的页面，那么就可以对列表组件使用<code>&lt;keep-alive&gt;&lt;/keep-alive&gt;</code>进行缓存，这样用户每次返回列表的时候，都能从缓存中快速渲染，而不是重新渲染</p>
-<hr>
-<h3><strong>五. Vue中引入组件的步骤?</strong></h3>
-<p>1.采用ES6的<code>import ... from ...</code>语法或CommonJS的<code>require()</code>方法引入组件<br>
-2.对组件进行注册,代码如下</p>
-<pre class="hljs javascript"><code class="javascript"><span class="hljs-comment">// 注册</span>
-Vue.component(<span class="hljs-string">'my-component'</span>, {
-  <span class="hljs-attr">template</span>: <span class="hljs-string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span>
-})
-</code></pre>
-<p>3.使用组件<code>&lt;my-component&gt;&lt;/my-component&gt;</code></p>
-<hr>
-<h3><strong>六. 指令<code>v-el</code>的作用是什么?</strong></h3>
-<p>提供一个在页面上已存在的 DOM 元素作为 Vue 实例的挂载目标.可以是 CSS 选择器，也可以是一个 HTMLElement 实例,</p>
-<hr>
-<h3><strong>七. 在Vue中使用插件的步骤</strong></h3>
-<ol>
-<li>采用ES6的<code>import ... from ...</code>语法或CommonJSd的<code>require()</code>方法引入插件</li>
-<li>使用全局方法<code>Vue.use( plugin )</code>使用插件,可以传入一个选项对象<code>Vue.use(MyPlugin, { someOption: true })</code>
-</li>
-</ol>
-<hr>
-<h3><strong>八. 请列举出3个Vue中常用的生命周期钩子函数?</strong></h3>
-<ol>
-<li>
-<strong>created:</strong> 实例已经创建完成之后调用,在这一步,实例已经完成数据观测, 属性和方法的运算, watch/event事件回调. 然而, 挂载阶段还没有开始, <code>$el</code>属性目前还不可见</li>
-<li>
-<strong>mounted:</strong> <code>el</code>被新创建的 <code>vm.$el</code> 替换，并挂载到实例上去之后调用该钩子。如果 <code>root</code> 实例挂载了一个文档内元素，当 mounted 被调用时 <code>vm.$el</code> 也在文档内。</li>
-<li>
-<strong>activated:</strong>:<code>keep-alive</code>组件激活时调用</li>
-</ol>
-<hr>
-<h3><strong>九. 请简述下Vuex的原理和使用方法</strong></h3>
-<div class="image-package">
-<img src="vue01.png"   alt="数据单向流动" style="cursor: zoom-in;"><div class="image-caption">数据单向流动</div>
-</div>
-<p>一个应用可以看作是由上面三部分组成: <strong>View, Actions,State</strong>,数据的流动也是从View =&gt; Actions =&gt; State =&gt;View 以此达到数据的单向流动.但是项目较大的, 组件嵌套过多的时候, 多组件共享同一个State会在数据传递时出现很多问题.Vuex就是为了解决这些问题而产生的.</p>
-<p>Vuex可以被看作项目中所有组件的数据中心,我们将所有组件中共享的State抽离出来,任何组件都可以访问和操作我们的数据中心.</p>
-<div class="image-package">
-<div class="image-container" style="max-width: 700px; max-height: 560px; background-color: transparent;">
-<div class="image-container-fill" style="padding-bottom: 66.91%;"></div>
-<div class="image-view" data-width="837" data-height="560"><img style="cursor: zoom-in;" src="vue02.png"></div>
-</div>
-<div class="image-caption">Vuex原理</div>
-</div>
-<p>上图可以很好的说明Vuex的组成,一个实例化的Vuex.Store由state, mutations和actions三个属性组成:</p>
-<ul>
-<li>state中保存着共有数据</li>
-<li>改变state中的数据有且只有通过mutations中的方法,且mutations中的方法必须是同步的</li>
-<li>如果要写异步的方法,需要些在actions中, 并通过commit到mutations中进行state中数据的更改.</li>
-</ul>
-<blockquote>
-<p>更多Vuex信息,请参考Vuex官网 : <a href="https://link.jianshu.com/?t=https://vuex.vuejs.org/en/intro.html" target="_blank" rel="nofollow">vuex.vuejs.org</a></p>
-</blockquote>
-<hr>
-<h3><strong>十. 请谈谈Vue框架和Angular.js和React的不同</strong></h3>
-<blockquote>
-<p>参见:<a href="https://link.jianshu.com/?t=https://cn.vuejs.org/v2/guide/comparison.html" target="_blank" rel="nofollow">Vue对比其他框架</a></p>
-</blockquote>
-<hr>
-
-          </div>
-        </div>
+<body>
+    <div class="warp">
+     <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p><p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 <p>1</p>
+	 <p>2</p>
+	 <p>3</p>
+	 <p>4</p>
+	 <p>5</p>
+	 <p>6</p>
+	 <p>7</p>
+	 <p>8</p>
+	 <p>9</p>
+	 <p>10</p>
+	 
     </div>
+    <div >
+       <input type="text"  name="q" x-webkit-speech="" placeholder="搜索商品" autocomplete="off"
+                    value="">
+    </div>
+    <div  style="position: fixed; top: 20%; right:100px;width: 100px; height: 100px;
+        border: 1px solid red;">
+    </div>
+</body>
+  <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
+<script>
  
-  
-
-<!----><!----></body></html>
+function printStyles(elem) {
+    var dtop = $(document).scrollTop();
+    var position = $("#"+elem).css("position");
+    var top = $("#"+elem).css('top');
+    var height = $(window).height();//整个窗口高
+     height = height / 4;
+    var html = 'top:' + dtop + "<br/>"
+        + "bodyTop:" + document.body.scrollTop + "<br/>"
+        + "position:" + position + "<br/>" + "top:" + top + "<br/>"
+        + "height:" + height;
+    return html;
+}
+ 
+ 
+    $().ready(function () {
+        window.onscroll = function() {
+ 
+        //测试代码
+        $("#debugmsg").html(printStyles('float-search'));
+        //end 测试代码
+ 
+        $("#float-search input").focus(function() {
+            var top = $(document).scrollTop();
+            var height = $(window).height();//整个窗口高
+            height = height / 4;
+ 
+            $("#float-search").css("position", "absolute");
+            $("#float-search").css("top",top);
+            setTimeout(function() {
+                $("html,body").animate({scrollTop:top},5);//1000是ms,也可以用slow代替 
+            },5);
+            //测试代码
+        $("#debugmsg").html(printStyles('float-search'));
+        //end 测试代码
+ 
+        }).blur(function() {
+            $("#float-search").css("position", "fixed");
+            $("#float-search").css("top","0");
+ 
+ 
+            //测试代码
+         $("#debugmsg").html(printStyles('float-search'));
+        //end 测试代码
+        });
+ 
+		}
+    });
+ 
+ 
+ 
+ 
+ 
+</script>
+</html>
