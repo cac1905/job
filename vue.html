@@ -163,56 +163,27 @@
        <input type="text"  name="q" x-webkit-speech="" placeholder="搜索商品" autocomplete="off"
                     value="">
     </div>
-    <div  style="position: fixed; top: 0; left: 0;width: 95%; height: 40px;
+    <div id="float-search" style="position: fixed; top: 0; left: 0;width: 95%; height: 40px;
         border: 1px solid red;">
     </div>
 </body>
   <script src="//cdn.bootcss.com/jquery/3.1.0/jquery.js"></script>
 <script>
+
+		$("#float-search input").focus(function() {
+            $("#float-search").css("top","0");
+        });
  
-function printStyles(elem) {
-    var dtop = $(document).scrollTop();
-    var position = $("#"+elem).css("position");
-    var top = $("#"+elem).css('top');
-    var height = $(window).height();//整个窗口高
-     height = height / 4;
-    var html = 'top:' + dtop + "<br/>"
-        + "bodyTop:" + document.body.scrollTop + "<br/>"
-        + "position:" + position + "<br/>" + "top:" + top + "<br/>"
-        + "height:" + height;
-    return html;
-}
- 
+ 		window.onscroll = function() {
+ 			$("#float-search").css("top","0");
+ 		}
  
     $().ready(function () {
         window.onscroll = function() {
  
-        //测试代码
-        $("#debugmsg").html(printStyles('float-search'));
-        //end 测试代码
  
         $("#float-search input").focus(function() {
-            var top = $(document).scrollTop();
-            var height = $(window).height();//整个窗口高
-            height = height / 4;
- 
-            $("#float-search").css("position", "absolute");
-            $("#float-search").css("top",top);
-            setTimeout(function() {
-                $("html,body").animate({scrollTop:top},5);//1000是ms,也可以用slow代替 
-            },5);
-            //测试代码
-        $("#debugmsg").html(printStyles('float-search'));
-        //end 测试代码
- 
-        }).blur(function() {
-            $("#float-search").css("position", "fixed");
             $("#float-search").css("top","0");
- 
- 
-            //测试代码
-         $("#debugmsg").html(printStyles('float-search'));
-        //end 测试代码
         });
  
 		}
