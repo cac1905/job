@@ -1,97 +1,81 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.5, maximum-scale=0.5, user-scalable=no">
-    <title>Title</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        body, html {
-            font-size: 24px;
-            height: 100%;
-        }
-        ul {
-            padding-bottom: 1rem;
-        }
-        ul li {
-            list-style: none;
-        }
-        .header,
-        .bottom {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4.0833rem;
-        }
-        .header {
-        	top: 0;
-        	background-color: #ccc;
-        	text-align: center;
-        }
-        .bottom > input {
-            width: 100%;
-            border: 0;
-            outline: 0;
-            background: rgb(246, 246, 246);
-            color: #333;
-            text-align: center;
-            line-height: 4.0833rem;
-            font-size: 1.25rem;
-        }
-    </style>
+    <title>测试input的focus事件，导致的问题</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
+<style>
+    body{margin:10px;padding:0px;}
+    header {
+        background-color: #ccc;
+        height: 44px;
+        position:fixed;
+        top:0px;
+        left:0px;
+        width:100%;
+        border-bottom:1px solid #ccc; 
+        z-index:1;
+    }
+    .input-bottom{
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        width:100%;
+        border-top:1px solid #ccc;
+        background-color:#fff;
+        z-index:1;
+    }
+
+    .input{
+        width:100%;
+        border:none;
+        outline:none;
+        padding:10px;
+        line-height:2em;
+    }
+
+    .wrapper{
+        position:absolute;
+        top:30px;
+        left:0px;
+        right:0px;
+        bottom:30px;
+        overflow:auto;
+        -webkit-overflow-scrolling : touch;
+    }
+</style>
 <body>
-<div id="scroll-body">
-	<header class="header">.header</header>
-    <ul></ul>
+ 
+<header>header</header>
+<div class="input-bottom">
+    <input id = "input2" class = "input" type = "text" placeholder = "底部输入框" />
 </div>
-<div class="bottom"><input type="text" placeholder="请输入内容" onfocus="evocation()"></div>
-<script src="./js/jroll.js"></script>
-<script>
-    function getClientHeight() {
-//        获取移动端屏幕高度
-        var winHeight
-        if (window.innerHeight) {
-            winHeight = window.innerHeight;
-        } else if ((document.body) && (document.body.clientHeight)) {
-            winHeight = document.body.clientHeight;
-        } else if (document.documentElement && document.documentElement.clientHeight && document.documentElement.clientWidth) {
-            winHeight = document.documentElement.clientHeight;
-        }
-        return winHeight
+<div class="wrapper">
+    <p>既然当大于一屏时，IOS下的输入框表现这么差的话，那么当使用输入框时，就得尽量不要让数据大于一屏了</p>
+    <p>所以，本页采用固定布局，出去输入框之外的元素，都包含在该元素内部，该元素占据整屏的区域，元素内部滚动</p>
+    <p>Android：上输入框表现正常，下输入框：相同的问题，有的表现正常，有的会被键盘盖住(会出现该情况的手机，占据少数，而且跟浏览器相关)</p>
+    <p>IOS下：上输入框表现正常</p>
+    <p>IOS下，下输入框会弹到键盘上面，虽不是紧挨着键盘，但是情况可以接受。</p>
+    <p>所以这种情况下，是可以使用的，最好再把Android下的问题，解决一下，那么该方法，将是固定输入框的最佳解决方案了</p>
+    <p style = "height:1000px;">
+        控制中间区域的部分
+    </p>
+    <p>到底了</p>
+</div>
+<script >
+    function _a(ele){
+        var v = 0;
+        ele.addEventListener("focus", function(){
+            v = window.pageYOffset;
+        }, false);
+        ele.addEventListener("blur", function(){
+            window.scrollTo(0, v);
+        }, false);
     }
  
-    var scrollBody = document.querySelector('#scroll-body') //获取滚动区域的DOM
-    var bottom = document.querySelector('.bottom') //获取底部DOM
-    function renderLi() {
-        //渲染li列表，采用DocumentFragment方案
-        var ul = document.querySelector('ul')
-        var dFrag = document.createDocumentFragment()
-        var startTime = new Date().getTime()
-        for (var i = 0; i < 100; i++) {
-            var li = document.createElement("li")
-            li.textContent = i
-            dFrag.appendChild(li)
-        }
-        ul.appendChild(dFrag)
-        var endTime = new Date().getTime()
-        console.log('渲染耗时：', endTime-startTime, 'ms')
-    }
-    function evocation() {
-        //ios唤出弹框，Android的不需要
-        setTimeout(() => document.body.scrollTop = document.body.scrollHeight, 500)
-    }
-    renderLi()
-    document.addEventListener('DOMContentLoaded', function() {
-        var height = getClientHeight() - bottom.offsetHeight //获取滚动区域高度
-        scrollBody.style.height = height + 'px' //计算出实际的滚动区域的高度，然后设置
-        new JRoll(scrollBody) //实例化JRoll插件
-    })
+    _a(document.getElementById("input2"));
 </script>
 </body>
 </html>
