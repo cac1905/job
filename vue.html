@@ -20,12 +20,18 @@
         ul li {
             list-style: none;
         }
+        .header,
         .bottom {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 4.0833rem;
+        }
+        .header {
+        	top: 0;
+        	background-color: #ccc;
+        	text-align: center;
         }
         .bottom > input {
             width: 100%;
@@ -41,6 +47,7 @@
 </head>
 <body>
 <div id="scroll-body">
+	<header class="header">.header</header>
     <ul></ul>
 </div>
 <div class="bottom"><input type="text" placeholder="请输入内容" onfocus="evocation()"></div>
