@@ -1,59 +1,111 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
+	<title></title>
 
-    <meta charset="UTF-8">
-
-    <title>主页</title>
-
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-
-<meta name="renderer" content="webkit">
-
-<style type="text/css">
-
-html{font-size: 40px;}
-
-body{position: absolute;left: 0;width: 100%;height: 100%;overflow-x:hidden;margin: 0;font-size: .34rem;text-align: center;line-height: 3rem;color: #fff;}
-
-.head,.footer{position: fixed;left: 0;background: #4d406b;
-    height: 44px;width: 100%;}
-
-.head{top: 0;}
-
-.content{position: absolute;left: 0;top: 44px;bottom:44px;overflow-y:scroll;width: 100%;background-color: blue;}
-
-.footer{bottom: 0;}
-input {
-    position: absolute;
+	<style type="text/css">
+		.header,.footer{
+    position:absolute;
+    left:0;
+    right:0;
+    height:50px;
+    z-index:999;
+    background-color:#333;
 }
-</style>
-
+.header{
+    top:0;
+}
+.footer{
+    bottom:0
+}
+.main{
+    position:absolute;
+    left:0;
+    top:50px;
+    right:0;
+    bottom:50px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch; 
+}
+.content{
+    height:2000px;
+} 
+	</style>
 </head>
-
 <body>
 
-<div class="head">head</div>
 
-<div class="content">
-    我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>
-    我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>
-    我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>
-    我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>
-    我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>
-    我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>
-    我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>我是正文<br>
-
+<div class="header"></div>
+<div class="main" id="main">
+    <div class="content"></div>
+</div>
+<div class="footer">
+    <input type="text" />
 </div>
 
-<div class="footer">footer
-<input type="2222" name="">
-</div>
 
+<script type="text/javascript">
+	function moveAdjustment(domId){
+
+    document.documentElement.ontouchmove=function(e){
+            e.preventDefault();
+    };
+
+    var wrap=document.getElementById(domId);
+
+    wrap.addEventListener('touchstart',function(e){
+
+            var startPoint=e.touches[0].clientY;
+
+            wrap.ontouchmove=function(e){
+
+                var movePoint=e.touches[0].clientY;
+
+                var nowScroll=wrap.scrollTop;
+
+                var wholeScroll=wrap.scrollHeight-wrap.clientHeight;
+                //注意，这里的对象不能是e.target，因为禁止冒泡之后这个e就没用了。
+
+                if(nowScroll==0){
+
+                    if(startPoint<movePoint){
+
+                        e.preventDefault();
+
+                    }else{
+
+                        e.stopPropagation();
+
+                    };
+
+                }else if(nowScroll==wholeScroll){
+
+                    if(startPoint>movePoint){
+
+                        e.preventDefault();
+
+                    }else{
+
+                        e.stopPropagation();
+
+                    }
+
+                }else if(nowScroll>0 && nowScroll<wholeScroll){
+
+                    e.stopPropagation();
+
+                }else{
+
+                    e.preventDefault();
+
+                };
+
+            };
+
+    },false);
+};
+
+moveAdjustment('main'); 
+</script>
 </body>
-
-
-
 </html>
