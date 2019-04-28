@@ -11,19 +11,19 @@
 		<tr>
 			<td id="item1">1111111</td>
 			<td>
-			    <button class="btn_copy" id="codeBtn"  data-clipboard-target="#item1">复制邀请码</button>
+			    <button class="btn_copy" id="codeBtn1"  data-clipboard-target="#item1">复制邀请码</button>
 			</td>
 		</tr>
 		<tr>
 			<td id="item2">222222</td>
 			<td>
-			    <button class="btn_copy" id="codeBtn"  data-clipboard-target="#item2">复制邀请码</button>
+			    <button class="btn_copy" id="codeBtn2"  data-clipboard-target="#item2">复制邀请码</button>
 			</td>
 		</tr>
 		<tr>
 			<td id="item3">33333</td>
 			<td>
-			    <button class="btn_copy" id="codeBtn"  data-clipboard-target="#item3">复制邀请码</button>
+			    <button class="btn_copy" id="codeBtn3"  data-clipboard-target="#item3">复制邀请码</button>
 			</td>
 		</tr>
 	</table>
@@ -42,7 +42,9 @@
 $(".btn_copy").click(function(){
  
       //实例化clipboard
-      var clipboard = new ClipboardJS('#codeBtn');
+//       var clipboard = new ClipboardJS('#codeBtn');
+	var tarId = $(this).attr("id");
+      var clipboard = new ClipboardJS('#'+tarId);
       var e = $(this).parent().prev().text();
       clipboard.on("success", function(e){
         alert("复制成功！");
