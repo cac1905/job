@@ -28,9 +28,9 @@
 <script type="text/javascript" src="//1718d.com/resources/js/lib/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="./clipboard.min.js"></script>
 <script type="text/javascript">
-$(".code-btn").click(function(){
-      let e = document.getElementById("codeNum").innerText;
-// 	var e = $(this).parent().prev().text();
+$(".btn_copy").click(function(){
+//       let e = document.getElementById("codeNum").innerText;
+	var e = $(this).parent().prev().text();
 	console.log(e)
       let t = document.getElementById("input");
       t.value = e;
