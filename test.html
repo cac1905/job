@@ -6,25 +6,33 @@
 <meta charset="utf-8">
 </head>
 <body>
-<!-- 
-	说明：
-	1.data-clipboard-target 输入要复制的对象的ID
--->
-<button id="d_clip_button" class="my_clip_button" data-clipboard-target="fe_text"><b>复制到剪贴板</b></button>
-<br/>
-<textarea id="fe_text" cols="50" rows="3">输入需要复制的内容</textarea>
+<div class="code-box">
+      <p class="code-num" id="codeNum">AE86123456</p>
+      <textarea id="input"></textarea>
+      <p class="code-btn copy" id="codeBtn" data-clipboard-target="#input">复制邀请码</p>
+</div>
+	
+	
+	
+	
 </body>
 </html>
-<script type="text/javascript" src="ZeroClipboard.min.js"></script>
+<script type="text/javascript" src="clipboard.min.js"></script>
 <script type="text/javascript">
-// 定义一个新的复制对象
-var clip = new ZeroClipboard( document.getElementById("d_clip_button"), {
-  moviePath: "ZeroClipboard.swf"
-} );
-
-// 复制内容到剪贴板成功后的操作
-clip.on( 'complete', function(client, args) {
-   alert("复制成功，复制内容为："+ args.text);
-} );
-
+$(".code-btn").click(function(){
+      let e = document.getElementById("codeNum").innerText;
+      let t = document.getElementById("input");
+      t.value = e;
+      //实例化clipboard
+      var clipboard = new ClipboardJS('#codeBtn');
+      clipboard.on("success", function(e){
+        $(".alertMsg").html("复制成功！");
+        $(".modal-bg").css("display", "block");
+        e.clearSelection();
+      });
+      clipboard.on("error", function(e){
+        $(".alertMsg").html("请选择“拷贝”进行复制!");
+        $(".modal-bg").css("display", "block");
+      });
+    });
 </script>
