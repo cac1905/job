@@ -7,9 +7,11 @@
 </head>
 <body>
 <div class="code-box">
-      <p class="code-num" id="codeNum">AE86123456</p>
-      <textarea id="input"></textarea>
-      <p class="code-btn copy" id="codeBtn" data-clipboard-target="#input">复制邀请码</p>
+	<td id="codeNum">AE86123456</td>
+	<td>
+      	    <textarea id="input"></textarea> 
+	    <button class="btn_copy" id="codeBtn" data-clipboard-target="#input">复制邀请码</button>
+	</td>
 </div>
 	
 	
@@ -23,7 +25,8 @@
 <script type="text/javascript" src="./clipboard.min.js"></script>
 <script type="text/javascript">
 $(".code-btn").click(function(){
-      let e = document.getElementById("codeNum").innerText;
+//       let e = document.getElementById("codeNum").innerText;
+	var e = $(this).parent().prev().text();
       let t = document.getElementById("input");
       t.value = e;
       //实例化clipboard
