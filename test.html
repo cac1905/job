@@ -9,10 +9,21 @@
 <div class="code-box">
 	<table>
 		<tr>
-			<td id="codeNum">AE86123456</td>
+			<td>1111111</td>
 			<td>
-			    <textarea id="input"></textarea> 
-			    <button class="btn_copy" id="codeBtn" data-clipboard-target="#input">复制邀请码</button>
+			    <button class="btn_copy" id="codeBtn">复制邀请码</button>
+			</td>
+		</tr>
+		<tr>
+			<td>222222</td>
+			<td>
+			    <button class="btn_copy" id="codeBtn">复制邀请码</button>
+			</td>
+		</tr>
+		<tr>
+			<td>33333</td>
+			<td>
+			    <button class="btn_copy" id="codeBtn">复制邀请码</button>
 			</td>
 		</tr>
 	</table>
@@ -29,21 +40,16 @@
 <script type="text/javascript" src="./clipboard.min.js"></script>
 <script type="text/javascript">
 $(".btn_copy").click(function(){
-//       let e = document.getElementById("codeNum").innerText;
-	var e = $(this).parent().prev().text();
-	console.log(e)
-      let t = document.getElementById("input");
-      t.value = e;
+ 
       //实例化clipboard
       var clipboard = new ClipboardJS('#codeBtn');
+      var e = $(this).parent().prev().text();
       clipboard.on("success", function(e){
-        $(".alertMsg").html("复制成功！");
-        $(".modal-bg").css("display", "block");
+        alert("复制成功！");
         e.clearSelection();
       });
       clipboard.on("error", function(e){
-        $(".alertMsg").html("请选择“拷贝”进行复制!");
-        $(".modal-bg").css("display", "block");
+        alert("复制失败，请手动复制！");
       });
     });
 </script>
